@@ -1,0 +1,7 @@
+<%= form_for(@task) do |f| %>
+
+<%= hidden_field_tag :complete, false %>
+
+<%= f.submit "Uncomplete Task", class:"btn btn-primary" %>
+
+<% end %>

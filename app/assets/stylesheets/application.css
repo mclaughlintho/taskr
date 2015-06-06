@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+h1 {
+  color:purple;
+  font-family:Impact, sans-serif;
+}
+
+#complete {
+  color:green;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+#incomplete {
+  color:red;
+  text-decoration:none;
+  font-weight:lighter;
+}

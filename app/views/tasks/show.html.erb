@@ -1,0 +1,7 @@
+<h1><%= @task.title %></h1>
+
+<% if @task.complete? %>
+  <%= render 'uncomplete_form' %>
+<% else %>
+  <%= render 'complete_form' %>
+<% end %>

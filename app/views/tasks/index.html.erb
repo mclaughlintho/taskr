@@ -1,0 +1,17 @@
+<h1>TASKR</h1>
+
+<div>
+  <%= render 'form' %>
+</div>
+
+<ul>
+<% @tasks.each do |task| %>
+  <li>
+    <% if task.complete? %>
+      <span id='complete'><%= link_to task.title, task %> Status</span>
+    <% else %>
+      <span id='incomplete'><%= link_to task.title, task %> Status</span>
+    <% end %>
+  </li>
+<% end %>    
+</ul>
