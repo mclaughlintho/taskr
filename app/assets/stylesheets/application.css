@@ -20,17 +20,51 @@ body {
 
 h1 {
   color:purple;
-  font-family:Impact, sans-serif;
+  font-family:Verdana, sans-serif;
+  font-size:50px;
 }
 
-#complete {
+ul {
+  border: 2px solid black;
+}
+
+#complete a{
   color:green;
   text-decoration:none;
   font-weight:bold;
 }
 
-#incomplete {
+#incomplete a{
   color:red;
   text-decoration:none;
   font-weight:lighter;
+}
+
+/* Header and Footer */
+
+#navbar {
+  
+}
+
+#navbar a {
+  color:purple;
+  background-color:black;
+  padding:6px;
+  border: 4px orange solid;
+  border-radius:7px;
+  font-size:22px;
+  font-family:Verdana;
+  text-decoration:none;
+}
+
+#header {
+  position:relative;
+  height:75px;
+  background-color:purple;
+}
+
+#footer {
+  position: relative;
+  height:75px;
+  background-color:purple;
 }

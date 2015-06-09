@@ -8,9 +8,9 @@
 <% @tasks.each do |task| %>
   <li>
     <% if task.complete? %>
-      <span id='complete'><%= link_to task.title, task %> Status</span>
+      <span id='complete'><%= link_to task.title, task %></span>
     <% else %>
-      <span id='incomplete'><%= link_to task.title, task %> Status</span>
+      <span id='incomplete'><%= link_to task.title, task %></span>
     <% end %>
   </li>
 <% end %>    

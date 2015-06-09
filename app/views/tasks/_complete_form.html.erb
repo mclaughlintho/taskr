@@ -1,6 +1,6 @@
 <%= form_for(@task) do |f| %>
 
-<% hidden_field_tag :complete, true %>
+<%= f.hidden_field :complete, value: 1 %>
 
 <%= f.submit 'Complete Task', class:'btn btn-primary' %>
 
