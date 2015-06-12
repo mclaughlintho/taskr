@@ -17,7 +17,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     @task.update_attributes(task_params)
-    redirect_to @task
+    redirect_to root_url
   end
   
   private
