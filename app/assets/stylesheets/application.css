@@ -28,13 +28,13 @@ ul {
   border: 2px solid black;
 }
 
-#complete a{
+.complete a{
   color:green;
   text-decoration:none;
   font-weight:bold;
 }
 
-#incomplete a{
+.incomplete a{
   color:red;
   text-decoration:none;
   font-weight:lighter;

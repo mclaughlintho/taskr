@@ -6,18 +6,18 @@
 
 <ul>
 <% @tasks.each do |task| %>
-  <li>
+  <li class="task">
     <% if task.complete? %>
-      <span id='complete'><%= link_to task.title, task %></span>
-        <div>
+      <span class='complete'><%= link_to task.title, task %></span>
+        <div class="uncomplete-form">
           <%= form_for(task) do |f| %>
           <%= f.hidden_field :complete, value: false %>
           <%= f.submit "Uncomplete Task", class:"btn btn-primary" %>
           <% end %>
       </div>
     <% else %>
-      <span id='incomplete'><%= link_to task.title, task %></span>
-      <div>
+      <span class='incomplete'><%= link_to task.title, task %></span>
+      <div class="complete-form">
         <%= form_for(task) do |f| %>
         <%= f.hidden_field :complete, value: 1 %>
         <%= f.submit 'Complete Task', class:'btn btn-primary' %>

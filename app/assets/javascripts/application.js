@@ -14,3 +14,24 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+
+
+// Clicking the 'Complete Task' button
+
+$(document).ready(function() {
+  $('.complete-form').on('click', function() {
+    $(this).closest('.incomplete').addClass('complete').removeClass('incomplete');
+    $(this).addClass('uncomplete-form').removeClass('complete-form');
+  })
+})
+
+// Clicking the 'Uncomplete Task' button
+
+$(document).ready(function() {
+  $('.uncomplete-form').on('click', function() {
+    $(this).closest('.complete').addClass('incomplete').removeClass('complete');
+    $(this).addClass('complete-form').removeClass('uncomplete-form');
+  })
+})
