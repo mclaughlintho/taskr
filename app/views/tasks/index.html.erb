@@ -15,7 +15,16 @@
           <%= f.submit "Uncomplete Task", class:"btn btn-primary" %>
           <% end %>
       </div>
+      
+      <div class="complete-form hidden">
+        <%= form_for(task) do |f| %>
+        <%= f.hidden_field :complete, value: 1 %>
+        <%= f.submit 'Complete Task', class:'btn btn-primary' %>
+        <% end %>
+      </div>
+      
     <% else %>
+    
       <span class='incomplete'><%= link_to task.title, task %></span>
       <div class="complete-form">
         <%= form_for(task) do |f| %>
@@ -23,6 +32,14 @@
         <%= f.submit 'Complete Task', class:'btn btn-primary' %>
         <% end %>
       </div>
+      
+      <div class="uncomplete-form hidden">
+          <%= form_for(task) do |f| %>
+          <%= f.hidden_field :complete, value: false %>
+          <%= f.submit "Uncomplete Task", class:"btn btn-primary" %>
+          <% end %>
+      </div>
+      
     <% end %>
   </li>
 <% end %>    

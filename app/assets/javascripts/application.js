@@ -16,22 +16,32 @@
 //= require_tree .
 
 
+// CLicking the 'Create Task' button
+
+$(document).ready(function() {
+  $('.create-task').on('click', function() {
+    
+  });
+});
+
 
 
 // Clicking the 'Complete Task' button
 
 $(document).ready(function() {
   $('.complete-form').on('click', function() {
-    $(this).closest('.incomplete').addClass('complete').removeClass('incomplete');
-    $(this).addClass('uncomplete-form').removeClass('complete-form');
-  })
-})
+    $(this).closest('.task').find('.incomplete').addClass('complete').removeClass('incomplete');
+    $(this).addClass('hidden');
+    $(this).closest('.task').find('.uncomplete-form').show();
+});
+});
 
 // Clicking the 'Uncomplete Task' button
 
 $(document).ready(function() {
   $('.uncomplete-form').on('click', function() {
-    $(this).closest('.complete').addClass('incomplete').removeClass('complete');
-    $(this).addClass('complete-form').removeClass('uncomplete-form');
-  })
-})
+    $(this).closest('.task').find('.complete').addClass('incomplete').removeClass('complete');
+    $(this).addClass('hidden');
+    $(this).closest('.task').find('.complete-form').show();
+  });
+});

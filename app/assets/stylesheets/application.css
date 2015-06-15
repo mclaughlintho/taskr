@@ -18,6 +18,14 @@ body {
   background-color:#b7d1c4;
 }
 
+.hidden {
+  display:none;
+}
+
+.task {
+  
+}
+
 h1 {
   color:purple;
   font-family:Verdana, sans-serif;
