@@ -19,8 +19,14 @@
 // CLicking the 'Create Task' button
 
 $(document).ready(function() {
-  $('.create-task').on('click', function() {
-    
+  $('.new-task-form').on('submit', '.create-task', function() {
+    var form = $('.new-task-form');
+    $.ajax('/app/controllers/tasks_controller.rb', {
+      data: form.serialize(),
+      success: function(result) {
+        $('.tasks').append(result);
+      }
+    });
   });
 });
 
@@ -29,7 +35,8 @@ $(document).ready(function() {
 // Clicking the 'Complete Task' button
 
 $(document).ready(function() {
-  $('.complete-form').on('click', function() {
+  $('.complete-form').on('click', function(event) {
+    event.preventDefault();
     $(this).closest('.task').find('.incomplete').addClass('complete').removeClass('incomplete');
     $(this).addClass('hidden');
     $(this).closest('.task').find('.uncomplete-form').show();
@@ -39,7 +46,8 @@ $(document).ready(function() {
 // Clicking the 'Uncomplete Task' button
 
 $(document).ready(function() {
-  $('.uncomplete-form').on('click', function() {
+  $('.uncomplete-form').on('click', function(event) {
+    event.preventDefault();
     $(this).closest('.task').find('.complete').addClass('incomplete').removeClass('complete');
     $(this).addClass('hidden');
     $(this).closest('.task').find('.complete-form').show();

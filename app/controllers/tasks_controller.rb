@@ -11,13 +11,13 @@ class TasksController < ApplicationController
   
   def create
     @task = Task.create(task_params)
-    redirect_to @task
+    render @task
   end
   
   def update
     @task = Task.find(params[:id])
     @task.update_attributes(task_params)
-    redirect_to root_url
+    render @task
   end
   
   private
