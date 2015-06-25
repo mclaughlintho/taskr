@@ -19,7 +19,8 @@
 // CLicking the 'Create Task' button
 
 $(document).ready(function() {
-  $('.new-task-form').on('submit', '.create-task', function() {
+  $('.new-task-form').on('submit', '.create-task', function(event) {
+    event.preventDefault;
     var form = $('.new-task-form');
     $.ajax('/app/controllers/tasks_controller.rb', {
       data: form.serialize(),
@@ -35,21 +36,27 @@ $(document).ready(function() {
 // Clicking the 'Complete Task' button
 
 $(document).ready(function() {
-  $('.complete-form').on('click', function(event) {
+  $('.task').on('submit', '.complete-form', function(event) {
     event.preventDefault();
-    $(this).closest('.task').find('.incomplete').addClass('complete').removeClass('incomplete');
-    $(this).addClass('hidden');
-    $(this).closest('.task').find('.uncomplete-form').show();
+    $.ajax('/app/views/tasks/_uncomplete_form.html.erb', {
+      success: function(result) {
+        $(this).closest('.task').append(result);
+      }
+    })
+    $(this).closest('.incomplete-task').hide();
 });
 });
 
 // Clicking the 'Uncomplete Task' button
 
 $(document).ready(function() {
-  $('.uncomplete-form').on('click', function(event) {
+  $('.task').on('submit', '.uncomplete-form', function(event) {
     event.preventDefault();
-    $(this).closest('.task').find('.complete').addClass('incomplete').removeClass('complete');
-    $(this).addClass('hidden');
-    $(this).closest('.task').find('.complete-form').show();
+    $.ajax('app/views/tasks/_complete_form.html.erb', {
+      success: function(result) {
+        $(this).closest('.task').append(result)
+      }
+    })
+    $(this).closest('.complete-task').hide();
   });
 });

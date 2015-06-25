@@ -8,6 +8,8 @@
 <% @tasks.each do |task| %>
   <li class="task">
     <% if task.complete? %>
+    
+    <div class= 'complete-task'>
       <span class='complete'><%= link_to task.title, task %></span>
         <div class="uncomplete-form">
           <%= form_for(task) do |f| %>
@@ -15,16 +17,11 @@
           <%= f.submit "Uncomplete Task", class:"btn btn-primary" %>
           <% end %>
       </div>
-      
-      <div class="complete-form hidden">
-        <%= form_for(task) do |f| %>
-        <%= f.hidden_field :complete, value: 1 %>
-        <%= f.submit 'Complete Task', class:'btn btn-primary' %>
-        <% end %>
-      </div>
+    </div>  
       
     <% else %>
     
+    <div class='incomplete-task'>
       <span class='incomplete'><%= link_to task.title, task %></span>
       <div class="complete-form">
         <%= form_for(task) do |f| %>
@@ -32,13 +29,7 @@
         <%= f.submit 'Complete Task', class:'btn btn-primary' %>
         <% end %>
       </div>
-      
-      <div class="uncomplete-form hidden">
-          <%= form_for(task) do |f| %>
-          <%= f.hidden_field :complete, value: false %>
-          <%= f.submit "Uncomplete Task", class:"btn btn-primary" %>
-          <% end %>
-      </div>
+    </div>  
       
     <% end %>
   </li>
