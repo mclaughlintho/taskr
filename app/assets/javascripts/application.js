@@ -19,13 +19,15 @@
 // CLicking the 'Create Task' button
 
 $(document).ready(function() {
-  $('.new-task-form').on('submit', '.create-task', function(event) {
-    event.preventDefault;
-    var form = $('.new-task-form');
-    $.ajax('/app/controllers/tasks_controller.rb', {
+  $('.new-task-form form').on('submit', function(event) {
+    event.preventDefault();
+    var form = $(this);
+    $.ajax('/tasks', {
       data: form.serialize(),
+      type: 'post',
       success: function(result) {
         $('.tasks').append(result);
+        form.find('#task_title').val("");
       }
     });
   });
@@ -36,27 +38,48 @@ $(document).ready(function() {
 // Clicking the 'Complete Task' button
 
 $(document).ready(function() {
-  $('.task').on('submit', '.complete-form', function(event) {
+  $('.complete-form form').on('submit', function(event) {
     event.preventDefault();
-    $.ajax('/app/views/tasks/_uncomplete_form.html.erb', {
+    var completeForm = $(this)
+    $.ajax(completeForm.attr('action'), {
+      type: 'patch',
+      data: completeForm.serialize(),
       success: function(result) {
-        $(this).closest('.task').append(result);
+        completeForm.closest('.task').append(result);
+        completeForm.closest('.incomplete-task').remove();
       }
     })
-    $(this).closest('.incomplete-task').hide();
 });
 });
 
 // Clicking the 'Uncomplete Task' button
 
 $(document).ready(function() {
-  $('.task').on('submit', '.uncomplete-form', function(event) {
+  $('.uncomplete-form form').on('submit', function(event) {
     event.preventDefault();
-    $.ajax('app/views/tasks/_complete_form.html.erb', {
+    var uncompleteForm = $(this)
+    $.ajax(uncompleteForm.attr('action'), {
+      type: 'patch',
+      data: uncompleteForm.serialize(),
       success: function(result) {
-        $(this).closest('.task').append(result)
+        uncompleteForm.closest('.task').append(result);
+        uncompleteForm.closest('.complete-task').remove();
       }
     })
-    $(this).closest('.complete-task').hide();
   });
 });
+
+// Clicking the 'Delete' button
+
+$(document).ready(function() {
+  $('.delete').on('click', function(event) {
+    event.preventDefault();
+    var deleteButton = $(this)
+    $.ajax(deleteButton.attr('href'), {
+    type: 'delete',
+    success: function(result) {
+      deleteButton.closest('.task').remove();
+    }
+    })
+  })
+})

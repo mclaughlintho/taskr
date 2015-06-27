@@ -20,6 +20,11 @@ class TasksController < ApplicationController
     render @task
   end
   
+  def destroy
+    @task = Task.find(params[:id])
+    @task.delete
+  end
+  
   private
   
   def task_params
