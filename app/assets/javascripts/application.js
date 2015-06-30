@@ -38,14 +38,14 @@ $(document).ready(function() {
 // Clicking the 'Complete Task' button
 
 $(document).ready(function() {
-  $('.complete-form form').on('submit', function(event) {
+  $(document).on('submit', '.complete-form form', function(event) {
     event.preventDefault();
     var completeForm = $(this)
     $.ajax(completeForm.attr('action'), {
       type: 'patch',
       data: completeForm.serialize(),
-      success: function(result) {
-        completeForm.closest('.task').append(result);
+      success: function(updatedTask) {
+        completeForm.closest('.task').append(updatedTask);
         completeForm.closest('.incomplete-task').remove();
       }
     })
@@ -55,14 +55,14 @@ $(document).ready(function() {
 // Clicking the 'Uncomplete Task' button
 
 $(document).ready(function() {
-  $('.uncomplete-form form').on('submit', function(event) {
+  $(document).on('submit', '.uncomplete-form form', function(event) {
     event.preventDefault();
     var uncompleteForm = $(this)
     $.ajax(uncompleteForm.attr('action'), {
       type: 'patch',
       data: uncompleteForm.serialize(),
-      success: function(result) {
-        uncompleteForm.closest('.task').append(result);
+      success: function(updatedTask) {
+        uncompleteForm.closest('.task').append(updatedTask);
         uncompleteForm.closest('.complete-task').remove();
       }
     })
@@ -75,11 +75,6 @@ $(document).ready(function() {
   $('.delete').on('click', function(event) {
     event.preventDefault();
     var deleteButton = $(this)
-    $.ajax(deleteButton.attr('href'), {
-    type: 'delete',
-    success: function(result) {
       deleteButton.closest('.task').remove();
-    }
-    })
   })
 })

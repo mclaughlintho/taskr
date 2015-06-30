@@ -23,6 +23,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.delete
+    render nothing: true
   end
   
   private
