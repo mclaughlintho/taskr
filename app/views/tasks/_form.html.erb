@@ -1,8 +1,8 @@
 <%= form_for(@task) do |f| %>
 
 <%= f.label :title %>
-<%= f.text_field :title, class:"form-control" %>
+<span class="new-task"><%= f.text_field :title, class:"form-control" %></span>
 
-<%= f.submit "Create Task", class:"btn btn-primary" %>
+<span class="create-task"><%= f.submit "Create Task", class:"btn btn-primary" %></span>
 
 <% end %>

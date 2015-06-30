@@ -18,6 +18,14 @@ body {
   background-color:#b7d1c4;
 }
 
+.hidden {
+  display:none;
+}
+
+.task {
+  
+}
+
 h1 {
   color:purple;
   font-family:Verdana, sans-serif;
@@ -28,13 +36,13 @@ ul {
   border: 2px solid black;
 }
 
-#complete a{
+.complete a{
   color:green;
   text-decoration:none;
   font-weight:bold;
 }
 
-#incomplete a{
+.incomplete a{
   color:red;
   text-decoration:none;
   font-weight:lighter;

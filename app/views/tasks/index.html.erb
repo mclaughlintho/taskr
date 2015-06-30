@@ -1,29 +1,11 @@
 <h1>TASKR</h1>
 
-<div>
+<div class='new-task-form'>
   <%= render 'form' %>
 </div>
 
-<ul>
+<ul class="tasks">
 <% @tasks.each do |task| %>
-  <li>
-    <% if task.complete? %>
-      <span id='complete'><%= link_to task.title, task %></span>
-        <div>
-          <%= form_for(task) do |f| %>
-          <%= f.hidden_field :complete, value: false %>
-          <%= f.submit "Uncomplete Task", class:"btn btn-primary" %>
-          <% end %>
-      </div>
-    <% else %>
-      <span id='incomplete'><%= link_to task.title, task %></span>
-      <div>
-        <%= form_for(task) do |f| %>
-        <%= f.hidden_field :complete, value: 1 %>
-        <%= f.submit 'Complete Task', class:'btn btn-primary' %>
-        <% end %>
-      </div>
-    <% end %>
-  </li>
+  <%= render task %>
 <% end %>    
 </ul>

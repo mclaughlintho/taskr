@@ -1,4 +1,9 @@
-<%= form_for(@task) do |f| %>
-<%= f.hidden_field :complete, value: false %>
-<%= f.submit "Uncomplete Task", class:"btn btn-primary" %>
-<% end %>
+<div class= 'complete-task'>
+      <span class='complete'><%= link_to task.title, task %></span>
+        <div class="uncomplete-form">
+          <%= form_for(task) do |f| %>
+          <%= f.hidden_field :complete, value: false %>
+          <%= f.submit "Uncomplete Task", class:"btn btn-primary" %>
+          <% end %>
+      </div>
+    </div>  
